@@ -7,3 +7,24 @@
 
    You can use pytest or unittest.
 """
+from counter import Counter
+import unittest
+
+
+class CounterTest(unittest.TestCase):
+    def setUp(self):
+        self.x = Counter()
+        self.y = Counter()
+
+    def test_singleton(self):
+        self.x.increment()
+        print(self.x.count)
+        print(self.y.count)
+        self.assertEqual(self.x, self.y)
+
+    def test_both_increase(self):
+        self.x.increment()
+        self.y.increment()
+        print(self.x.count)
+        print(self.y.count)
+        self.assertEqual(self.x, self.y)
