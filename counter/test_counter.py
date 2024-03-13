@@ -18,13 +18,17 @@ class CounterTest(unittest.TestCase):
 
     def test_singleton(self):
         self.x.increment()
-        print(self.x.count)
-        print(self.y.count)
         self.assertEqual(self.x, self.y)
 
     def test_both_increase(self):
         self.x.increment()
         self.y.increment()
-        print(self.x.count)
-        print(self.y.count)
         self.assertEqual(self.x, self.y)
+
+    def test_edge_case(self):
+        a = Counter()
+        a.increment()
+        b = Counter()
+        print(a.count)
+        print(b.count)
+        self.assertEqual(a,b)

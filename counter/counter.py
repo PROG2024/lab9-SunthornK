@@ -16,11 +16,17 @@ class Counter:
     def __new__(cls, *args, **kwargs):
         """Create and initialize a single instance of the Registrar."""
         if not cls._instance:
+            cls.__count = 0
             cls._instance = super().__new__(cls, *args, **kwargs)
         return cls._instance
 
-    def __init__(self):
-        self.__count = 0
+    #
+    # _initialized = False
+    #
+    # def __init__(self):
+    #     if not Counter._initialized:
+    #         self.__count = 0
+    #         Counter._initialized = True
 
     def __str__(self):
         return f"{self.__count}"
@@ -31,4 +37,4 @@ class Counter:
 
     def increment(self):
         self.__count += 1
-        return self.count
+        return self.__count
